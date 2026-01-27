@@ -1,0 +1,78 @@
+:root {
+    /* Colors */
+    --swatch--light-050: white;
+    --swatch--light-100: #FAF9F6;
+    --swatch--light-200: #D1D1D1;
+
+    --swatch--dark-800: #303030;
+    --swatch--dark-900: #2A2A2A;
+
+    --swatch--brand-100: color-mix(in srgb, var(--swatch--brand-500), white 80%);
+    --swatch--brand-200: color-mix(in srgb, var(--swatch--brand-500), white 60%);
+    --swatch--brand-300: color-mix(in srgb, var(--swatch--brand-500), white 40%);
+    --swatch--brand-400: color-mix(in srgb, var(--swatch--brand-500), white 20%);
+    --swatch--brand-500: #FF4F00;
+    --swatch--brand-600: color-mix(in srgb, var(--swatch--brand-500), black 20%);
+    --swatch--brand-700: color-mix(in srgb, var(--swatch--brand-500), black 40%);
+    --swatch--brand-800: color-mix(in srgb, var(--swatch--brand-500), black 60%);
+    --swatch--brand-900: color-mix(in srgb, var(--swatch--brand-500), black 80%);
+
+    /* Typography */
+    --_typography---font--primary-family: 'Artlab', sans-serif;
+    --_typography---font--primary-regular: 200;
+    --_typography---line-height--primary: 1.5;
+
+    --_typography---font--secondary-family: 'Halfre', sans-serif;
+    --_typography---font--secondary-regular: 400;
+    --_typography---line-height--secondary: 1;
+
+    --_typography---font-size--text-main: clamp(0.875rem, 0.179vw + 0.839rem, 1rem);
+    --_typography---font-size--text-large: clamp(1.5rem, 0.357vw + 1.429rem, 1.75rem);
+    --_typography---font-size--h4: clamp(1.125rem, 0.357vw + 1.429rem, 1.25rem);
+    --_typography---font-size--h3: clamp(1.5rem, 0.357vw + 1.429rem, 1.75rem);
+    --_typography---font-size--h2: clamp(1.75rem, 0.714vw + 1.607rem, 2.25rem);
+    --_typography---font-size--h1: clamp(2.25rem, 1.071vw + 2.036rem, 3rem);
+    --_typography---font-size--display: clamp(2.25rem, 9.643vw + 0.321rem, 9rem);
+
+    /* Spacing */
+    --_spacing---space--1: clamp(0.25rem, 0.25rem + 0vw, 0.25rem);
+    --_spacing---space--2: clamp(0.4375rem, 0.4196rem + 0.0893vw, 0.5rem);
+    --_spacing---space--3: clamp(0.6875rem, 0.6696rem + 0.0893vw, 0.75rem);
+    --_spacing---space--4: clamp(0.875rem, 0.8393rem + 0.1786vw, 1rem);
+    --_spacing---space--5: clamp(1.3125rem, 1.2589rem + 0.2679vw, 1.5rem);
+    --_spacing---space--6: clamp(1.75rem, 1.6786rem + 0.3571vw, 2rem);
+    --_spacing---space--7: clamp(2.625rem, 2.5179rem + 0.5357vw, 3rem);
+    --_spacing---space--8: clamp(3.5rem, 3.3571rem + 0.7143vw, 4rem);
+
+    --_spacing---section-space--none: 0px;
+    --_spacing---section-space--small: clamp(3 * 1rem, ((3 - ((5 - 3) / (var(--site--viewport-max) - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((5 - 3) / (var(--site--viewport-max) - var(--site--viewport-min))) * 100vw), 5 * 1rem);
+    --_spacing---section-space--main: clamp(4 * 1rem, ((4 - ((7 - 4) / (var(--site--viewport-max) - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((7 - 4) / (var(--site--viewport-max) - var(--site--viewport-min))) * 100vw), 7 * 1rem);
+    --_spacing---section-space--large: clamp(5.5 * 1rem, ((5.5 - ((10 - 5.5) / (var(--site--viewport-max) - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((10 - 5.5) / (var(--site--viewport-max) - var(--site--viewport-min))) * 100vw), 10 * 1rem);
+    --_spacing---section-space--page-top: clamp(10 * 1rem, ((10 - ((14 - 10) / (var(--site--viewport-max) - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((14 - 10) / (var(--site--viewport-max) - var(--site--viewport-min))) * 100vw), 14 * 1rem);
+
+    /* Site Structure */
+    --site--viewport-max: 90;
+    --site--viewport-min: 20;
+    --max-width--main: calc(var(--site--viewport-max) * 1rem);
+    --max-width--full: 100%;
+    --site--margin: clamp(1 * 1rem, ((1 - ((5 - 1) / (var(--site--viewport-max) - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((5 - 1) / (var(--site--viewport-max) - var(--site--viewport-min))) * 100vw), 5 * 1rem);
+
+    /* Layout */
+    --_column-count---value: 12;
+    --site--gutter: 1rem;
+
+    /* Theme */
+    --_theme---background: var(--swatch--dark-800);
+    --_theme---background-2: var(--swatch--dark-900);
+    --_theme---text: var(--swatch--light-200);
+    --_theme---heading: var(--swatch--light-100);
+
+    /* Border Radius */
+    --radius--small: .25rem;
+    --radius--main: 1rem;
+    --radius--round: 100vw;
+
+    /* Project Slider */
+    --transition-speed: 1s;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}

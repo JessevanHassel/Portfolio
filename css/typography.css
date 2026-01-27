@@ -1,0 +1,40 @@
+@font-face {
+    font-family: 'Artlab';
+    src: url('/assets/fonts/Artlab-ExtraLight.woff2') format('woff2'),
+        url('/assets/fonts/Artlab-ExtraLight.woff') format('woff'),
+        url('/assets/fonts/Artlab-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Halfre';
+    src: url('/assets/fonts/Halfre.woff2') format('woff2'),
+        url('/assets/fonts/Halfre.woff') format('woff'),
+        url('/assets/fonts/Halfre.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: var(--_typography---font--primary-family);
+    font-weight: var(--_typography---font--primary-regular);
+    line-height: var(--_typography---line-height--primary);
+    color: var(--_theme---text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--_typography---font--secondary-family);
+    font-weight: var(--_typography---font--secondary-regular);
+    line-height: var(--_typography---line-height--secondary);
+    -webkit-font-feature-settings: "ss01" 1;
+    font-feature-settings: "ss01" 1;
+    color: var(--_theme---heading);
+}
