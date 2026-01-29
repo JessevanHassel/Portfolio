@@ -154,6 +154,7 @@ body.no-scroll {
 .main_menu_list {
     width: fit-content;
     margin-top: var(--_spacing---section-space--page-top);
+    z-index: 10;
 }
 
 .main_menu_link {
