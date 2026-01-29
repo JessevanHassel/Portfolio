@@ -154,7 +154,6 @@ body.no-scroll {
 .main_menu_list {
     width: fit-content;
     margin-top: var(--_spacing---section-space--page-top);
-    z-index: 10;
 }
 
 .main_menu_link {
@@ -180,6 +179,7 @@ body.no-scroll {
     opacity: 0.3;
     transform: scale(1) rotate(0deg);
     transition: bottom 0.8s ease, opacity 0.8s ease, transform 0.8s ease;
+    z-index: -1;
 }
 
 .main_menu_contain[data-active-index="0"]>.menu_logo_wrap {
