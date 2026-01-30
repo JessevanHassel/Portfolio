@@ -156,11 +156,44 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 opacity: 0,
                 duration: 1,
                 stagger: 0.15
-            }, '-=0.5')
+            }, '<0.5')
             .from(sliderControls, {
                 x: -20,
                 opacity: 0,
                 duration: 1
-            }, '-=0.8');
+            }, '<0.2');
     }
+
+    // Visual Gallery Animation
+    const headerDuration = 1.5;
+
+    function galleryAnimation() {
+        let mm = gsap.matchMedia();
+
+        mm.add('(prefers-reduced-motion: no-preference)', () => {
+            ScrollTrigger.batch('.visual_gallery_image', {
+                start: 'top 85%',
+                onEnter: batch => {
+                    const currentTime = gsap.globalTimeline.time();
+                    const initialDelay = currentTime < headerDuration ? headerDuration - currentTime : 0;
+
+                    gsap.to(batch, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1.5,
+                        delay: initialDelay,
+                        ease: 'power3.out',
+                        stagger: {
+                            each: 0.15,
+                            grid: 'auto'
+                        },
+                        overwrite: true
+                    });
+                },
+                once: true
+            });
+        });
+    }
+
+    galleryAnimation();
 });

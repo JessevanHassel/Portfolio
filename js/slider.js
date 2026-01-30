@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
             slideCounter++;
         }
     });
-    // -----------------------------
 
     // Initialize Pagination
     sliderItems.forEach((_, index) => {
@@ -103,63 +102,82 @@ document.addEventListener('DOMContentLoaded', () => {
     // Touch Swipe Logic
     let isDragging = false;
     let startPosition = 0;
+    let startPositionY = 0;
     let currentTranslate = 0;
     let previousTranslate = 0;
     let animationID;
+    let isScrolling = undefined;
     const threshold = 50;
 
-    // Event Listeners
-    sliderContainer.addEventListener('touchstart', touchStart);
+    sliderContainer.addEventListener('touchstart', touchStart, {
+        passive: false
+    });
     sliderContainer.addEventListener('touchend', touchEnd);
-    sliderContainer.addEventListener('touchmove', touchMove);
+    sliderContainer.addEventListener('touchmove', touchMove, {
+        passive: false
+    });
 
-    // Touch Start
     function touchStart(event) {
         isDragging = true;
+        isScrolling = undefined;
+
         startPosition = getPositionX(event);
+        startPositionY = event.touches[0].clientY;
 
         const itemWidth = sliderItems[0].offsetWidth;
         const style = window.getComputedStyle(sliderContainer);
         const gap = parseFloat(style.gap) || 0;
+
         previousTranslate = -(itemWidth + gap) * currentIndex;
 
-        animationID = requestAnimationFrame(animation);
+        currentTranslate = previousTranslate;
 
-        sliderContainer.style.transition = 'none';
+        animationID = requestAnimationFrame(animation);
+        sliderContainer.style.transform = 'none';
     }
 
-    // Touch Move
     function touchMove(event) {
-        if (isDragging) {
-            const currentPosition = getPositionX(event);
+        if (!isDragging) return;
+
+        const currentPosition = getPositionX(event);
+        const currentPositionY = event.touches[0].clientY;
+
+        const diffX = startPosition - currentPosition;
+        const diffY = startPositionY - currentPositionY;
+
+        if (typeof isScrolling === 'undefined') {
+            isScrolling = Math.abs(diffY) > Math.abs(diffX);
+        }
+
+        if (!isScrolling) {
+            if (event.cancelable) event.preventDefault();
+
             const currentMove = currentPosition - startPosition;
             currentTranslate = previousTranslate + currentMove;
         }
     }
 
-    // Touch End
     function touchEnd() {
         isDragging = false;
         cancelAnimationFrame(animationID);
 
-        const movedBy = currentTranslate - previousTranslate;
+        if (!isScrolling) {
+            const movedBy = currentTranslate - previousTranslate;
 
-        if (movedBy < -threshold && currentIndex < totalItems - 1) {
-            currentIndex += 1;
-        }
-
-        if (movedBy > threshold && currentIndex > 0) {
-            currentIndex -= 1;
+            if (movedBy < -threshold && currentIndex < totalItems - 1) {
+                currentIndex += 1;
+            } else if (movedBy > threshold && currentIndex > 0) {
+                currentIndex -= 1;
+            }
         }
 
         sliderContainer.style.transition = '';
-
         updateSlider();
     }
 
-    // Help Function
+    // Help Functions
     function animation() {
-        if (isDragging) {
+        if (isDragging && !isScrolling) {
             sliderContainer.style.transform = `translateX(${currentTranslate}px)`;
             requestAnimationFrame(animation);
         }
