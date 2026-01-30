@@ -35,7 +35,7 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    padding-block: var(--_spacing---space--4);
+    padding-top: var(--_spacing---space--4);
 }
 
 .back_menu_button {
