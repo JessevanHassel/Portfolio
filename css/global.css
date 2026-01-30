@@ -174,7 +174,7 @@
 /* Project Page */
 .project_page_wrap {
     min-height: 100vh;
-    padding-block: var(--_spacing---section-space--page-top);
+    padding-block: var(--_spacing---section-space--main);
 }
 
 .project_page_contain {
@@ -359,3 +359,4 @@
     }
 
 }
+
